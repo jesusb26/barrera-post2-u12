@@ -77,8 +77,15 @@ Estas reglas se ejecutan automáticamente en cada `push` mediante un workflow de
 # Ejecutar localmente las pruebas de arquitectura
 mvn test -Dtest=ReglasArquitectura
 ```
-## Test de violacion de las reglas
+## 🧪 Prueba de violación arquitectónica
+
+Se introdujo intencionalmente una dependencia prohibida desde el dominio hacia infraestructura. El pipeline de GitHub Actions detectó la violación y falló:
+
 ![alt text](docs/image.png)
 
-### Revertir la violación
+Luego de revertir el cambio, el pipeline volvió a pasar exitosamente:
+
+![alt text](docs/testFix.png)
+
+Esto confirma que las reglas de ArchUnit están activas y protegen la arquitectura.
 
