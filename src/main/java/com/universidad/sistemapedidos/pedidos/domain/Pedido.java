@@ -23,9 +23,7 @@ public class Pedido {
     private EstadoPedido estado;
 
     public Pedido() {
-    PedidoRepository repo = null; 
-    repo.findAll(); // aunque sea null, la referencia cuenta
-}
+    }
 
     public Pedido(TipoPedido tipo, double subtotal) {
         this.tipo = tipo;
