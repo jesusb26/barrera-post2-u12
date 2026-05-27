@@ -1,7 +1,5 @@
 package com.universidad.sistemapedidos.pedidos.domain;
 
-import com.universidad.sistemapedidos.pedidos.infrastructure.PedidoRepository;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -29,10 +27,6 @@ public class Pedido {
         this.tipo = tipo;
         this.subtotal = subtotal;
         this.estado = EstadoPedido.PENDIENTE;
-    }
-
-    public void metodoProhibido() {
-        PedidoRepository repo = null; // esto ya es dependencia prohibida
     }
 
     // Getters y setters
@@ -74,5 +68,6 @@ public class Pedido {
 
     public void setEstado(EstadoPedido estado) {
         this.estado = estado;
-    }
+    } 
+    
 }
