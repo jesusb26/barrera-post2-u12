@@ -1,5 +1,7 @@
 # Sistema de Gestión de Pedidos – Integración de Patrones (Unidad 12)
 
+[![Validación Arquitectónica](https://github.com/jesusb26/barrera-post2-u12/actions/workflows/arquitectura.yml/badge.svg)](https://github.com/jesusb26/barrera-post2-u12/actions/workflows/arquitectura.yml)
+
 ## 📌 Arquitectura y patrones aplicados
 
 El sistema implementa cuatro patrones de diseño para desacoplar la lógica de negocio, la selección de algoritmos y las notificaciones:
