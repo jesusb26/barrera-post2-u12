@@ -77,3 +77,8 @@ Estas reglas se ejecutan automáticamente en cada `push` mediante un workflow de
 # Ejecutar localmente las pruebas de arquitectura
 mvn test -Dtest=ReglasArquitectura
 ```
+## Test de violacion de las reglas
+![alt text](docs/image.png)
+
+### Revertir la violación
+
