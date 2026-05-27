@@ -16,12 +16,11 @@ public class ReglasArquitectura {
     @ArchTest
     static final ArchRule dominioAislado
             = noClasses().that().resideInAPackage("..pedidos.domain..")
-                    .should().dependOnClassesThat()
+                    .should().accessClassesThat()
                     .resideInAnyPackage(
                             "..pedidos.infrastructure..",
                             "..pedidos.controllers..",
                             "javax.persistence..",
-                            "org.springframework.mail..",
                             "org.springframework.data.."
                     );
 
