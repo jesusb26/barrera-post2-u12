@@ -58,3 +58,20 @@ http://localhost:9000/dashboard?id=sistema-pedidos-refactored
 La refactorización aplicando Strategy, Factory, Observer y Facade redujo la complejidad ciclomática del método principal de 5 a 1, eliminó la complejidad cognitiva y elevó la cobertura al 88.3%. Los issues de seguridad, fiabilidad y mantenibilidad se redujeron a rating A, cumpliendo con el Quality Gate.
 
 Principio Open/Closed: El patrón Strategy permite añadir nuevos tipos de pedido (por ejemplo, "EXPRESS_NOCTURNO") sin modificar la clase FachadaPedidos ni el factory. Solo se crea una nueva implementación de ProcesadorPedido y se anota con @Component. El factory la detecta automáticamente gracias a la inyección de lista de Spring. Esto demuestra que el sistema está abierto para extensión, pero cerrado para modificación.
+
+## 🏛️ Validación Arquitectónica con ArchUnit
+
+Se han definido 5 reglas arquitectónicas mediante ArchUnit para garantizar la pureza del dominio y el desacoplamiento de capas:
+
+1. **Dominio aislado** – Las clases del paquete `..domain..` no deben depender de infraestructura, controladores, ni librerías de persistencia.
+2. **Controladores solo usan fachada** – Los controladores REST solo pueden acceder a la `FachadaPedidos`, al dominio (entidades) y a clases de Spring Web/Java.
+3. **Puertos como interfaces** – La interfaz `ProcesadorPedido` (puerto) es una interfaz, no una clase concreta.
+4. **Procesadores implementan puerto** – Todas las clases dentro de `..processors..` implementan `ProcesadorPedido`.
+5. **Infraestructura no accede a REST** – Las clases de infraestructura (repositorios) no deben acceder a los controladores.
+
+Estas reglas se ejecutan automáticamente en cada `push` mediante un workflow de GitHub Actions. El pipeline fallará si alguna regla se viola.
+
+```bash
+# Ejecutar localmente las pruebas de arquitectura
+mvn test -Dtest=ReglasArquitectura
+```
